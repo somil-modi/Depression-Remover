@@ -4,7 +4,7 @@ Run this command before using it
 
 "
 pip install -r requirements.txt
-"
+"\b
 Click Start chat to use Chatbot
 
 Click begin Meditation to use Relax mode

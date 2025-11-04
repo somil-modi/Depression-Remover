@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calm AI – Your Mental Health AI Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__brand">
+      <div class="logo" aria-hidden="true">🧠</div>
+      <span class="brand">Calm AI</span>
+    </div>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#qna">QnA</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="btn btn--primary" id="startTherapyTop">Start Session</button>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">Calm AI – Your Mental Health AI Companion & AI Therapy</h1>
+      <p class="hero__subtitle">Personalized mental wellness support with free online therapy to calm health powered by advanced AI – available 24/7</p>
+      <p class="hero__tag">Mental health support for everyone, with the power of AI 💜</p>
+      <button class="btn btn--cta" id="startTherapy">Start Free AI Therapy Session →</button>
+    </div>
+
+    <section class="features">
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">🧠</div>
+        <h3 class="card__title">AI Therapy with AI Therapist</h3>
+        <p class="card__text">24/7 confidential counseling with advanced AI powered therapist online.</p>
+        <button class="btn btn--secondary" data-open="panel-chat">Start Chat</button>
+      </article>
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">🧘</div>
+        <h3 class="card__title">Personalized AI Meditations</h3>
+        <p class="card__text">AI-generated mindfulness sessions tailored to your current needs.</p>
+        <button class="btn btn--secondary" data-open="panel-meditation">Begin Meditation</button>
+      </article>
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">📈</div>
+        <h3 class="card__title">Mood & Progress Tracker</h3>
+        <p class="card__text">Daily check-ins, trends, and gentle goals to build resilient habits.</p>
+        <button class="btn btn--secondary" data-open="panel-mood">Track Mood</button>
+      </article>
+    </section>
+  </main>
+
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>Calm AI blends evidence-based CBT techniques, compassionate conversation, and mindfulness to help reduce depressive thoughts and build healthy routines. It is not a replacement for professional care. If you are in crisis, please seek immediate help in your area.</p>
+  </section>
+
+  <section id="reviews" class="section">
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <blockquote>“The daily check-ins helped me notice small wins.” — User</blockquote>
+      <blockquote>“Guided meditations felt personalized and soothing.” — User</blockquote>
+    </div>
+  </section>
+
+  <section id="qna" class="section">
+    <h2>QnA</h2>
+    <details>
+      <summary>Is Calm AI a substitute for a therapist?</summary>
+      <p>No. Calm AI supports wellbeing and can complement therapy but does not replace licensed professionals.</p>
+    </details>
+    <details>
+      <summary>Is my data stored?</summary>
+      <p>Your notes and mood entries are stored locally in your browser by default.</p>
+    </details>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <form id="contactForm" class="form">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+      <button class="btn btn--primary" type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__left">© <span id="year"></span> Calm AI</div>
+    <div class="footer__right">
+      <button class="link" id="openSettings">Settings</button>
+      <a class="link" href="#">Privacy</a>
+      <a class="link" href="#">Terms</a>
+    </div>
+  </footer>
+
+  <!-- Panels -->
+  <div class="panel" id="panel-chat" role="dialog" aria-modal="true" aria-labelledby="chatTitle" hidden>
+    <div class="panel__content">
+      <div class="panel__head">
+        <h3 id="chatTitle">AI Therapist</h3>
+        <button class="icon" data-close>✖</button>
+      </div>
+      <div class="chat" id="chatWindow" aria-live="polite"></div>
+      <form id="chatForm" class="chat__input" autocomplete="off">
+        <input id="chatText" type="text" placeholder="Share what's on your mind…" required>
+        <button class="btn btn--primary" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-meditation" role="dialog" aria-modal="true" aria-labelledby="medTitle" hidden>
+    <div class="panel__content">
+      <div class="panel__head">
+        <h3 id="medTitle">Guided Meditation</h3>
+        <button class="icon" data-close>✖</button>
+      </div>
+      <form id="medForm" class="form form--inline">
+        <select id="medGoal">
+          <option value="grounding">Grounding</option>
+          <option value="self_compassion">Self‑Compassion</option>
+          <option value="sleep">Sleep</option>
+          <option value="focus">Focus</option>
+        </select>
+        <select id="medDuration">
+          <option value="3">3 min</option>
+          <option value="5" selected>5 min</option>
+          <option value="10">10 min</option>
+        </select>
+        <button class="btn btn--secondary" type="submit">Generate</button>
+      </form>
+      <div id="medScript" class="med__script"></div>
+      <div class="med__controls">
+        <button class="btn" id="medPlay">Play</button>
+        <button class="btn" id="medPause">Pause</button>
+        <button class="btn" id="medStop">Stop</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-mood" role="dialog" aria-modal="true" aria-labelledby="moodTitle" hidden>
+    <div class="panel__content">
+      <div class="panel__head">
+        <h3 id="moodTitle">Mood Tracker</h3>
+        <button class="icon" data-close>✖</button>
+      </div>
+      <form id="moodForm" class="form form--inline">
+        <label>
+          Mood
+          <input id="moodValue" type="range" min="1" max="5" step="1" value="3">
+        </label>
+        <input id="moodNote" type="text" placeholder="Optional note (what influenced today?)">
+        <button class="btn btn--secondary" type="submit">Save</button>
+      </form>
+      <div id="moodList" class="mood__list"></div>
+    </div>
+  </div>
+
+  
+
+  <!-- Settings Modal -->
+  <div class="panel" id="panel-settings" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
+    <div class="panel__content">
+      <div class="panel__head">
+        <h3 id="settingsTitle">Settings</h3>
+        <button class="icon" data-close>✖</button>
+      </div>
+      <form id="settingsForm" class="form">
+        <label>
+          Optional OpenAI API Key
+          <input id="openaiKey" type="password" placeholder="sk-...">
+        </label>
+        <label>
+          Backend URL (Python)
+          <input id="backendUrl" type="text" placeholder="http://127.0.0.1:8000">
+        </label>
+        <p class="muted">Stored locally. Use a server proxy for production.</p>
+        <button class="btn btn--secondary" type="submit">Save</button>
+      </form>
+      <div class="sos">
+        <h4>In crisis?</h4>
+        <p>Call your local emergency number or visit <a class="link" href="https://www.opencounseling.com/suicide-hotlines" target="_blank" rel="noopener">global crisis resources</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
